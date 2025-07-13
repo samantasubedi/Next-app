@@ -27,7 +27,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <main> {children}</main>
+        <div className="font-bold text-center top-5">
+          this is navigation bar
+        </div>
       </body>
     </html>
   );
