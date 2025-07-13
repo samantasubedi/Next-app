@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Suspense } from "react";
 interface user {
   id: number;
   name: string;
@@ -13,11 +14,13 @@ const Userspage = async () => {
       <Link href="/" className="hover:bg-amber-400">
         Go back to homepage
       </Link>
-      <ul>
-        {userdata.map((currentuser) => (
-          <li key={currentuser.id}>{currentuser.name}</li>
-        ))}
-      </ul>
+      <Suspense fallback={<p>loading...</p>}>
+        <ul>
+          {userdata.map((currentuser) => (
+            <li key={currentuser.id}>{currentuser.name}</li>
+          ))}
+        </ul>
+      </Suspense>
     </>
   );
 };

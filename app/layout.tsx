@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Suspense } from "react";
 import "./globals.css";
-
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -27,7 +27,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <main> {children}</main>
+        <main>
+          {" "}
+          <Suspense fallback="Loading..">{children}</Suspense>
+        </main>
         <div className="font-bold text-center top-5">
           this is navigation bar
         </div>
