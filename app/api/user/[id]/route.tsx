@@ -20,3 +20,9 @@ export function GET(request: NextRequest, { params: { id } }: props) {
     });
   else return NextResponse.json("the id doesnot exist");
 }
+export async function PUT(request:NextRequest, {params: { id } }: props) {
+  const body= await request.json()
+  if (!body.name){
+    return(NextResponse.json({error:"please provide a name field"},{status:400}))// checking if the request body is valid, request body is the data sent to be updated in the database we are checking if its format matches the format of the data stored as every data must me stored in same format
+  }
+}
