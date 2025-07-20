@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import schema from "../../schema";
 interface props {
   params: { id: number };
 }
@@ -30,10 +31,13 @@ export async function POST(request:NextRequest, {params: { id } }: props) {
     return(NextResponse.json({"id":id,"name":body.name}))
   }
 }
+
+//using zod to validate the object structure and its properties instead of using if else as above
 export async function PUT(request:NextRequest,id:props){            //PUT function updates the existing object while POST creates a new object
   const body=await request.json();
-if (!body.name){
-  return NextResponse.json({"error":"name field is required"})
+  const validation=schema.safeParse(body)
+if (!validation.success){
+  return NextResponse.json(validation.error)
 }
 else{
   return NextResponse.json({"id":id,"name":body.name})
