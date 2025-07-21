@@ -7,7 +7,7 @@ export default function Home() {
       </Link>
 
       <div className="font-bold text-9xl text-center bottom-0">Hello world</div>
-      <button className="btn btn-primary">this is button</button>
+      <button className="btn btn-primary">Button</button>
     </div>
   );
 }
