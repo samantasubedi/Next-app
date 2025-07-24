@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Suspense } from "react";
 import "./globals.css";
+import { Toaster } from "@/components/ui/sonner";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -34,6 +35,7 @@ export default function RootLayout({
         <div className="font-bold text-center top-5">
           this is navigation bar
         </div>
+        <Toaster richColors position="top-center" closeButton />
       </body>
     </html>
   );
