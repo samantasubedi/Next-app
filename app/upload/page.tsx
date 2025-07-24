@@ -11,10 +11,17 @@ const Uploadpage = () => {const [imageid,setimageid]=useState<string>("")
     <div>
      
       <CldUploadWidget uploadPreset='uploadpreset123'
-      onUploadAdded={(result:cloudnaryresult)=>{
-       
-        setimageid(result.info.public_id)
-        console.log(result)}}
+      onUpload={(result) => {
+        if (
+          result.info &&
+          typeof result.info === "object" &&
+          "public_id" in result.info &&
+          typeof (result.info as { public_id: string }).public_id === "string"
+        ) {
+          setimageid((result.info as { public_id: string }).public_id);
+        }
+        console.log(result);
+      }}
       >
         {({open}) => (
           <button onClick={() => open()} className='btn btn-primary'>
